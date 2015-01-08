@@ -6,5 +6,5 @@ import java.util.List;
 
 @Data
 public class Course {
-    private List<Ingredient> ingredients;
+    private List<CourseIngredient> ingredients;
 }
