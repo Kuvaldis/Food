@@ -1,2 +1,6 @@
 rootProject.name = 'Food'
 
+include 'core'
+
+include 'shell'
+

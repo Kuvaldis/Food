@@ -3,32 +3,31 @@ buildscript {
         jcenter()
         mavenCentral()
     }
+    dependencies {
+        classpath "com.netflix.nebula:gradle-extra-configurations-plugin:2.0.1"
+    }
 }
 
-plugins {
-    id 'java'
-    id 'nebula.provided-base' version '2.0.1'
+allprojects {
+    version = '0.1.0-SNAPSHOT'
+    group = 'food'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+subprojects {
 
-version = '0.1.0-SNAPSHOT'
+    apply plugin: 'java'
+    apply plugin: 'nebula.provided-base'
 
-repositories {
-    jcenter()
-    mavenCentral()
-}
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
-dependencies {
-    provided 'org.projectlombok:lombok:1.14.8'
-
-    compile 'org.springframework:spring-context:4.1.4.RELEASE'
-    compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
-
-    compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
-        exclude group: 'org.springframework'
+    repositories {
+        jcenter()
+        mavenCentral()
     }
 
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    dependencies {
+        provided 'org.projectlombok:lombok:1.14.8'
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
 }

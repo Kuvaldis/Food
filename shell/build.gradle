@@ -1,0 +1,10 @@
+
+
+dependencies {
+    compile 'org.springframework:spring-context:4.1.4.RELEASE'
+    compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
+
+    compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
+        exclude group: 'org.springframework'
+    }
+}
