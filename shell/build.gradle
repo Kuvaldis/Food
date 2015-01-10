@@ -1,6 +1,60 @@
+plugins {
+    id 'distribution'
+}
 
+ext {
+    shellBaseName = 'food-shell'
+    libDir = 'libs'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.runtime.collect { "$libDir/${it.name}" }.join(" ")
+        )
+    }
+}
+
+task startScripts(type: GradleBuild) {
+    outputs.dir project.file("$buildDir/scripts")
+
+    buildFile 'dist.gradle'
+    tasks = ['startScripts']
+}
+
+configure(distTar) {
+    dependsOn 'startScripts', 'jar'
+    archiveName = "$shellBaseName.${it.extension}"
+}
+
+task copyDependencies(type: Sync) {
+    from configurations.runtime
+    into "$buildDir/$libDir"
+}
+
+distTar.dependsOn 'copyDependencies'
+
+distributions {
+    main {
+        baseName = shellBaseName
+        contents {
+            into('bin') {
+                from startScripts
+            }
+            into("$libDir") {
+                from {
+                    "$buildDir/$libDir"
+                }
+            }
+        }
+    }
+}
+
+build.dependsOn 'distTar'
 
 dependencies {
+    compile project(':core')
+
     compile 'org.springframework:spring-context:4.1.4.RELEASE'
     compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
 

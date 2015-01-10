@@ -1,0 +1,7 @@
+apply plugin: 'application'
+
+startScripts {
+    applicationName = 'food-shell'
+    mainClassName = 'org.springframework.shell.Bootstrap'
+    classpath = project.files('food-shell.jar')
+}

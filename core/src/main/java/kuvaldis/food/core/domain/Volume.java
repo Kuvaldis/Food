@@ -1,4 +1,4 @@
-package kuvaldis.food.domain;
+package kuvaldis.food.core.domain;
 
 import lombok.Data;
 
