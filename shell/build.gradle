@@ -4,10 +4,25 @@ plugins {
 
 ext {
     shellBaseName = 'food-shell'
-    libDir = 'libs'
+    libDir = 'lib'
+    jarDir = 'shell'
+}
+
+task copyDependencies(type: Sync) {
+    from configurations.compile - configurations.provided
+    into "$buildDir/$libDir"
+}
+
+task copyShell(type: Copy) {
+    dependsOn 'jar'
+    from "$buildDir/$jarDir"
+    into "$buildDir/$libDir"
+    rename { "${shellBaseName}.jar" }
 }
 
 jar {
+    dependsOn 'copyDependencies'
+    destinationDir project.file("$buildDir/$jarDir")
     manifest {
         attributes(
                 'Class-Path': configurations.runtime.collect { "$libDir/${it.name}" }.join(" ")
@@ -23,16 +38,9 @@ task startScripts(type: GradleBuild) {
 }
 
 configure(distTar) {
-    dependsOn 'startScripts', 'jar'
+    dependsOn 'startScripts', 'copyShell'
     archiveName = "$shellBaseName.${it.extension}"
 }
-
-task copyDependencies(type: Sync) {
-    from configurations.runtime
-    into "$buildDir/$libDir"
-}
-
-distTar.dependsOn 'copyDependencies'
 
 distributions {
     main {
