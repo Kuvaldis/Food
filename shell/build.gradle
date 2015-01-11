@@ -5,7 +5,6 @@ plugins {
 ext {
     shellBaseName = 'food-shell'
     libDir = 'lib'
-    jarDir = 'shell'
 }
 
 task copyDependencies(type: Sync) {
@@ -15,14 +14,13 @@ task copyDependencies(type: Sync) {
 
 task copyShell(type: Copy) {
     dependsOn 'jar'
-    from "$buildDir/$jarDir"
+    from jar
     into "$buildDir/$libDir"
     rename { "${shellBaseName}.jar" }
 }
 
 jar {
     dependsOn 'copyDependencies'
-    destinationDir project.file("$buildDir/$jarDir")
     manifest {
         attributes(
                 'Class-Path': configurations.runtime.collect { "$libDir/${it.name}" }.join(" ")
