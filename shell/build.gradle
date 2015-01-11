@@ -10,8 +10,7 @@ ext {
 dependencies {
     compile project(':core')
 
-    compile 'org.springframework:spring-context:4.1.4.RELEASE'
-    compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
+    compile "org.springframework:spring-context-support:$springVersion"
 
     compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
         exclude group: 'org.springframework'
@@ -70,3 +69,30 @@ distributions {
 }
 
 build.dependsOn 'distTar'
+
+task buildVersionFile {
+    ext {
+        versionFile = project.file("src/main/resources/buildinfo.properties")
+        branchName = System.getenv('GITFLOW_BRANCH')
+        buildNumber = System.getenv('BUILD_NUMBER')
+    }
+
+    inputs.property "version", version
+    inputs.property "branchName", branchName
+    inputs.property "buildNumber", buildNumber
+    outputs.files versionFile
+
+    doLast {
+        String buildVersion = version
+        if (branchName) {
+            buildVersion += ".${branchName[0].toLowerCase()}"
+        }
+
+        if (buildNumber) {
+            buildVersion += "-${buildNumber}"
+        }
+
+        versionFile.text = "buildVersion = ${buildVersion}"
+    }
+}
+compileJava.dependsOn 'buildVersionFile'

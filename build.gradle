@@ -14,6 +14,9 @@ allprojects {
 }
 
 subprojects {
+    ext {
+        springVersion = '4.1.4.RELEASE'
+    }
 
     apply plugin: 'java'
     apply plugin: 'nebula.provided-base'
@@ -28,6 +31,12 @@ subprojects {
 
     dependencies {
         provided 'org.projectlombok:lombok:1.14.8'
+
+        compile "org.springframework:spring-context:$springVersion"
+
+        compile 'org.slf4j:slf4j-api:1.7.9'
+        compile 'ch.qos.logback:logback-classic:1.1.2'
+
         testCompile group: 'junit', name: 'junit', version: '4.11'
     }
 }
