@@ -7,6 +7,17 @@ ext {
     libDir = 'lib'
 }
 
+dependencies {
+    compile project(':core')
+
+    compile 'org.springframework:spring-context:4.1.4.RELEASE'
+    compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
+
+    compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
+        exclude group: 'org.springframework'
+    }
+}
+
 task copyDependencies(type: Sync) {
     from configurations.compile - configurations.provided
     into "$buildDir/$libDir"
@@ -23,7 +34,9 @@ jar {
     dependsOn 'copyDependencies'
     manifest {
         attributes(
-                'Class-Path': configurations.runtime.collect { "$libDir/${it.name}" }.join(" ")
+                'Class-Path': (configurations.compile - configurations.provided).files.collect {
+                    "${it.name}"
+                }.join(" ")
         )
     }
 }
@@ -57,14 +70,3 @@ distributions {
 }
 
 build.dependsOn 'distTar'
-
-dependencies {
-    compile project(':core')
-
-    compile 'org.springframework:spring-context:4.1.4.RELEASE'
-    compile 'org.springframework:spring-context-support:4.1.4.RELEASE'
-
-    compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
-        exclude group: 'org.springframework'
-    }
-}
