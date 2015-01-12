@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class Ingredient {
-    private String name;
+    private final String name;
 }

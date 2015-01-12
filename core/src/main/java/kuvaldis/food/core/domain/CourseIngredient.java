@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class CourseIngredient {
-    private Ingredient ingredient;
-    private Volume volume;
+    private final Ingredient ingredient;
+    private final Volume volume;
 }

@@ -8,4 +8,5 @@
 
     <context:component-scan base-package="kuvaldis.food.shell"/>
 
+    <bean class="kuvaldis.food.core.spring.CoreConfig"/>
 </beans>

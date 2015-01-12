@@ -6,5 +6,5 @@ import java.util.List;
 
 @Data
 public class DayMeal {
-    List<Meal> meals;
+    private final List<Meal> meals;
 }

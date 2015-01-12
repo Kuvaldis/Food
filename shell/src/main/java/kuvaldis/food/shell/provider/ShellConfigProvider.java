@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.shell.plugin.BannerProvider;
+import org.springframework.shell.plugin.HistoryFileNameProvider;
 import org.springframework.shell.plugin.PromptProvider;
 import org.springframework.shell.support.util.FileUtils;
 import org.springframework.shell.support.util.OsUtils;
@@ -17,10 +18,11 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+// todo move some to properties
 @Slf4j
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class ShellInfoProvider implements BannerProvider, PromptProvider {
+public class ShellConfigProvider implements BannerProvider, PromptProvider, HistoryFileNameProvider {
 
     @Autowired
     private BuildInfoUtils buildInfoUtils;
@@ -56,5 +58,10 @@ public class ShellInfoProvider implements BannerProvider, PromptProvider {
     @Override
     public String getPrompt() {
         return "fm>";
+    }
+
+    @Override
+    public String getHistoryFileName() {
+        return "food-manager.log";
     }
 }
