@@ -11,3 +11,4 @@ shell/shell.iml
 spring-shell.log
 food-manager.log
 log/shell.log
+shell/src/main/resources/environment/application-dev.properties
