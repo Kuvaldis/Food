@@ -15,6 +15,11 @@ dependencies {
     compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
         exclude group: 'org.springframework'
     }
+
+    // unified logging for dependencies
+    compile 'org.slf4j:jul-to-slf4j:1.7.10'
+    compile 'org.slf4j:log4j-over-slf4j:1.7.10'
+    compile 'org.slf4j:jcl-over-slf4j:1.7.10'
 }
 
 task copyDependencies(type: Sync) {

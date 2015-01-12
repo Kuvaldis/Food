@@ -9,4 +9,5 @@ shell/.gradle/
 shell/build/
 shell/shell.iml
 spring-shell.log
-
+food-manager.log
+log/shell.log
