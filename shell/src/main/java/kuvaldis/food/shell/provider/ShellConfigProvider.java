@@ -18,7 +18,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-// todo move some to properties
 @Slf4j
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -36,8 +35,8 @@ public class ShellConfigProvider implements BannerProvider, PromptProvider, Hist
             return sb.toString();
         } catch (URISyntaxException | IOException e) {
             log.error("Banner init exception");
-            throw new RuntimeException(e);
         }
+        return null;
     }
 
     @Override
