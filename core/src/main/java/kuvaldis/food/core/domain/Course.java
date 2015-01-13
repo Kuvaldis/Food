@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Course {
+    private final String name;
     private final CourseType courseType;
     private final List<MealType> preferredMealTypes;
     private final List<CourseIngredient> ingredients;

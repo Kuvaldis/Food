@@ -1,5 +1,5 @@
 package kuvaldis.food.core.domain;
 
 public enum CourseType {
-    APPETIZER, DRINK, MAIN, SOUP, SALAD
+    APPETIZER, DRINK, MAIN, SOUP, SALAD, DESSERT, SNACK
 }
