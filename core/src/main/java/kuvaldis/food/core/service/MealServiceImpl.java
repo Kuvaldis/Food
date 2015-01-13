@@ -10,13 +10,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MealServiceImpl implements MealService {
 
-    @Value("${some}")
-    private String value;
-
     @Override
     public Meal calculate(MealCalculationParams params) {
-        System.out.println(value);
-        log.debug("calculate {}", params);
+        if (log.isDebugEnabled()) {
+            log.debug("calculate {}", params);
+        }
         return null;
     }
 }
