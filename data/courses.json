@@ -3,5 +3,15 @@
     "name": "tea",
     "courseType": "DRINK",
     "preferredMealTypes": ["BREAKFAST"]
+  },
+  {
+    "name": "juice",
+    "courseType": "DRINK",
+    "preferredMealTypes": ["BREAKFAST"]
+  },
+  {
+    "name": "eggs",
+    "courseType": "MAIN",
+    "preferredMealTypes": ["BREAKFAST"]
   }
 ]

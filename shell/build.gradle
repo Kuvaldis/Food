@@ -15,6 +15,7 @@ dependencies {
     compile('org.springframework.shell:spring-shell:1.1.0.RELEASE') {
         exclude group: 'org.springframework'
     }
+    compile 'com.brsanthu:data-exporter:1.0.4'
 
     // unified logging for dependencies
     compile 'org.slf4j:jul-to-slf4j:1.7.10'
