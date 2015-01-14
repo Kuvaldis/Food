@@ -1,5 +1,6 @@
 package kuvaldis.food.shell.command;
 
+import kuvaldis.food.core.domain.Meal;
 import kuvaldis.food.core.domain.MealCalculationParams;
 import kuvaldis.food.core.domain.MealType;
 import kuvaldis.food.core.service.MealService;
@@ -11,14 +12,14 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class MealCommand implements CommandMarker {
+public class MealCommand extends AbstractShellCommandMarker {
 
     @Autowired
     private MealService mealService;
 
     @CliCommand(value = "meal calculate")
-    public void test() {
-        log.info("bla");
-        mealService.calculate(new MealCalculationParams(MealType.BREAKFAST));
+    public void mealCalculate() {
+        final Meal meal = mealService.calculate(new MealCalculationParams(MealType.BREAKFAST));
+        System.out.println(meal);
     }
 }

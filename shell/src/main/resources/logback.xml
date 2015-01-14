@@ -1,5 +1,10 @@
 <configuration>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>%msg%n</pattern>
         </encoder>
@@ -19,9 +24,9 @@
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
-    <logger name="kuvaldis" level="INFO"/>
-    <logger name="org.springframework" level="OFF"/>
+    <logger name="kuvaldis" level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
 </configuration>

@@ -1,15 +1,13 @@
 package kuvaldis.food.core.service;
 
-import kuvaldis.food.core.dao.CourseDao;
+import kuvaldis.food.core.persistence.CourseRepository;
 import kuvaldis.food.core.domain.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -22,7 +20,7 @@ public class MealServiceImpl implements MealService {
     private MealsConfigurationService mealsConfigurationService;
 
     @Autowired
-    private CourseDao courseDao;
+    private CourseRepository courseRepository;
 
     @Override
     public Meal calculate(MealCalculationParams params) {
@@ -35,7 +33,7 @@ public class MealServiceImpl implements MealService {
         MealType mealType = params.getMealType();
         final MealsConfiguration configuration = mealsConfigurationService.get();
         final List<CourseType> possibleTypes = configuration.forMealType(mealType);
-        final List<Course> courses = courseDao.get(mealType);
+        final List<Course> courses = courseRepository.get(mealType);
         final List<Course> calculatedCourses = possibleTypes.stream()
                 .map(type -> findAppropriate(type, courses))
                 .filter(Objects::nonNull)
@@ -54,8 +52,8 @@ public class MealServiceImpl implements MealService {
         return null;
     }
 
-    public void setCourseDao(CourseDao courseDao) {
-        this.courseDao = courseDao;
+    public void setCourseRepository(CourseRepository courseRepository) {
+        this.courseRepository = courseRepository;
     }
 
     public void setMealsConfigurationService(MealsConfigurationService mealsConfigurationService) {

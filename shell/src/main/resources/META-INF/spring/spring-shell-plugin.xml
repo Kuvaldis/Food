@@ -11,8 +11,8 @@
 
     <bean class="kuvaldis.food.core.spring.CoreConfig"/>
 
-    <context:property-placeholder location="classpath:environment/application.properties"/>
-    <context:property-placeholder location="classpath:environment/application-${environment:default}.properties"
+    <context:property-placeholder location="classpath:application.properties"/>
+    <context:property-placeholder location="classpath:environment/application-${env:default}.properties"
                                   ignore-resource-not-found="true" ignore-unresolvable="true" order="1"/>
 
 </beans>

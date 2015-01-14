@@ -8,7 +8,7 @@ core/core.iml
 shell/.gradle/
 shell/build/
 shell/shell.iml
-spring-shell.log
 food-manager.log
-log/shell.log
+log/
 shell/src/main/resources/environment/application-dev.properties
+shell/src/main/resources/environment/logback-dev.xml
