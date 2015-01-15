@@ -12,3 +12,5 @@ food-manager.log
 log/
 shell/src/main/resources/environment/application-dev.properties
 shell/src/main/resources/environment/logback-dev.xml
+app/food/shell/shell.iml
+app/food/core/core.iml
