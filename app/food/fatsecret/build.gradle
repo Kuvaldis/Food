@@ -1,0 +1,6 @@
+dependencies {
+    compile('org.springframework.security.oauth:spring-security-oauth:2.0.5.RELEASE') {
+        exclude group: 'org.springframework'
+    }
+    compile "org.springframework:spring-web:$springVersion"
+}
