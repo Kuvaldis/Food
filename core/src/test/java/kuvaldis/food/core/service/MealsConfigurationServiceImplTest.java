@@ -1,6 +1,5 @@
 package kuvaldis.food.core.service;
 
-import com.google.common.truth.Truth;
 import kuvaldis.food.core.domain.CourseType;
 import kuvaldis.food.core.domain.MealType;
 import kuvaldis.food.core.domain.MealsConfiguration;
@@ -11,7 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.junit.Assert.*;
 
 public class MealsConfigurationServiceImplTest {
 
