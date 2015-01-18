@@ -36,7 +36,7 @@ public class MealCommand extends AbstractShellCommandMarker {
 
     @CliCommand(value = "test")
     public void test() {
-        System.out.println(fatSecretApiService.getFood());
+        System.out.println(fatSecretApiService.getFood(4384l));
     }
 
     private void handsomePrint(Meal meal) {
