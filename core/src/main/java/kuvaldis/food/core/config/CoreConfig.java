@@ -1,4 +1,4 @@
-package kuvaldis.food.core.spring;
+package kuvaldis.food.core.config;
 
 import kuvaldis.food.fatsecret.config.FatSecretConfig;
 import org.springframework.context.annotation.ComponentScan;

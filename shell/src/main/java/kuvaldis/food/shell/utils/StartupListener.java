@@ -1,4 +1,4 @@
-package kuvaldis.food.shell.spring;
+package kuvaldis.food.shell.utils;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.joran.JoranConfigurator;

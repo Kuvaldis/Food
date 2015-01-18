@@ -9,7 +9,7 @@
     <context:component-scan base-package="kuvaldis.food.shell"/>
 
 
-    <bean class="kuvaldis.food.core.spring.CoreConfig"/>
+    <bean class="kuvaldis.food.core.config.CoreConfig"/>
 
     <context:property-placeholder location="classpath:application.properties"/>
     <context:property-placeholder location="classpath:environment/application-${env:default}.properties"
