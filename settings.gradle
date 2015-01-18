@@ -5,7 +5,3 @@ include 'core'
 include 'shell'
 
 include 'fatsecret'
-
-include 'fatsecret/api'
-rootProject.children.find { it.name == 'fatsecret/api' }.name = 'api'
-
