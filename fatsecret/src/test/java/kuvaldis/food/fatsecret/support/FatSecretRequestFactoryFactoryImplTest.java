@@ -1,11 +1,9 @@
-package kuvaldis.food.fatsecret.auth;
+package kuvaldis.food.fatsecret.support;
 
-import com.google.common.truth.Truth;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.security.oauth.consumer.OAuthConsumerSupport;
@@ -16,8 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyString;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FatSecretRequestFactoryFactoryImplTest {

@@ -1,4 +1,4 @@
-package kuvaldis.food.fatsecret.auth;
+package kuvaldis.food.fatsecret.support;
 
 import org.springframework.http.client.ClientHttpRequestFactory;
 
