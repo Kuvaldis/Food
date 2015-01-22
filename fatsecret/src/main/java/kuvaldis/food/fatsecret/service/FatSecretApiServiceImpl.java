@@ -27,4 +27,8 @@ public class FatSecretApiServiceImpl implements FatSecretApiService {
     private <T> T doGet(final RestOperations template, Class<T> cls) {
         return template.getForObject(BASE_URL, cls);
     }
+
+    public void setFatSecretRequestTemplateFactory(FatSecretRequestTemplateFactory fatSecretRequestTemplateFactory) {
+        this.fatSecretRequestTemplateFactory = fatSecretRequestTemplateFactory;
+    }
 }
